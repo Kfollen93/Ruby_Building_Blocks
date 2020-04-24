@@ -1,20 +1,20 @@
-array = [17,3,6,9,15,8,6,1,10]
-def stock_picker(array)
-   result = 0
-  array.each do |i|
-    min_index = array.index(array.min)
-    new_array = array[min_index..-1]
-    max_index_of_new_array = new_array.index(new_array.max)
-    min = new_array.min
-    max = new_array.max
-    var = max - min
-    array.delete(min)
-    array.delete(max)
-    if var > result
-      result = var
-    end
+ 
+def stock_picker(prices)
+  #variables needed to solve
+  result = []
+  max_profit = 0
+ 
+  prices.each_with_index do |buy, buy_index|
+  prices[buy_index +1..-1].each_with_index do |sell, sell_index|
+  profit = sell - buy
+  if profit > max_profit
+    max_profit = profit
+    result = [buy_index, sell_index + buy_index + 1]
   end
-  p result
+  end
+end
+print result
 end
 
-stock_picker(array)
+
+puts stock_picker([17,3,6,9,15,8,6,1,10])
