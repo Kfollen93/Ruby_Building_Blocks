@@ -1,14 +1,6 @@
-def merge_sort(num_array)
-return if num_array.length < 2
-
-left_half_length = num_array.length / 2
-p left_half = num_array.slice(0, left_half_length)
-right_half_length = num_array.length / 2
-p right_half = num_array.slice(4, right_half_length)
-merge_sort(num_array)
-
-
-
+def merge_sort(numbers)
+return if numbers.length < 2
+print numbers.each_slice((numbers.length/2.0).round).to_a # Needs to be a float here (2.0).
 end
 
-merge_sort([4, 8, 6, 2, 1, 7, 5, 3])
+merge_sort([4, 8, 6, 2, 1, 5, 3])
