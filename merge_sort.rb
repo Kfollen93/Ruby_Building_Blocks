@@ -1,6 +1,28 @@
-def merge_sort(numbers)
-return if numbers.length < 2
-print numbers.each_slice((numbers.length/2.0).round).to_a # Needs to be a float here (2.0).
+def merge_sort(array)
+    if array.length <= 1
+        array
+    else
+        mid = (array.length / 2).floor
+        left = merge_sort(array[0..mid - 1])
+        right = merge_sort(array[mid..array.length])
+        merge(left, right)
+    end
 end
 
-merge_sort([4, 8, 6, 2, 1, 5, 3])
+
+
+def merge(left, right)
+    if left.empty?
+        right
+    elsif right.empty?
+        left
+    elsif left.first < right.first
+     p   [left.first] + merge(left[1..left.length], right)
+    else
+        [right.first] + merge(left, right[1..right.length])
+    end
+end
+
+
+
+p merge_sort([4, 8, 6, 2, 1, 5, 3])
